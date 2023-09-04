@@ -2,27 +2,21 @@ import { CartMeal } from "../types";
 
 type CartState = {
     meals: CartMeal[];
+    totalItems: number;
     totalPrice: number;
 };
 
 export const initialState: CartState = {
     meals: [],
+    totalItems: 0,
     totalPrice: 0,
 };
-
-const calculateTotal = (meals: CartMeal[]) => meals.reduce((total, meal) => total + (meal.price * meal.quantity), 0);
-
 
 type MealAdder = (meals: CartMeal[], newMeal: CartMeal) => CartMeal[];
 type MealRemover = (meals: CartMeal[], id: string) => CartMeal[];
 
 const addMeal: MealAdder = (meals, newMeal) => [...meals, newMeal];
 const removeMeal: MealRemover = (meals, mealId) => meals.filter(meal => meal.id !== mealId);
-
-/* TODO 
-The following formulas are very similar and can be abstracted, but Typescript is making it hard:
-- addOrUpdateMeal / removeOrUpdateMeal
-*/
 
 type MealUpdater = (meals: CartMeal[], newMeal: CartMeal, change: number) => CartMeal[];
 
@@ -47,6 +41,12 @@ const removeOrUpdateMeal: MealRemover = (meals, mealId) => {
         removeMeal(meals, mealId);
 }
 
+const calculateTotalPrice = (meals: CartMeal[]) =>
+    meals.reduce((total, meal) => total + (meal.price * meal.quantity), 0);
+
+const calculateTotalItems = (meals: CartMeal[]) =>
+    meals.reduce((total, meal) => total + meal.quantity, 0);
+
 type AddMealAction = { type: "ADD_MEAL"; payload: CartMeal };
 type RemoveMealAction = { type: "REMOVE_MEAL"; payload: string };
 type ClearCartAction = { type: "CLEAR_CART" };
@@ -57,13 +57,19 @@ const cartReducer = (state: CartState, action: CartActions) => {
     switch (action.type) {
         case "ADD_MEAL": {
             const newMeals = addOrUpdateMeal(state.meals, action.payload);
-            const newTotal = calculateTotal(newMeals);
-            return { meals: newMeals, totalPrice: newTotal }
+            return {
+                meals: newMeals,
+                totalItems: calculateTotalItems(newMeals),
+                totalPrice: calculateTotalPrice(newMeals)
+            }
         }
         case "REMOVE_MEAL": {
             const newMeals = removeOrUpdateMeal(state.meals, action.payload)
-            const newTotal = calculateTotal(newMeals);
-            return { meals: newMeals, totalPrice: newTotal }
+            return {
+                meals: newMeals,
+                totalItems: calculateTotalItems(newMeals),
+                totalPrice: calculateTotalPrice(newMeals)
+            }
         }
         case "CLEAR_CART": {
             return initialState;
