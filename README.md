@@ -8,6 +8,7 @@ This is my first attempt at a full React + Typescript application. The primary g
 - **Code Modularity**: Writing reusable and modular code.
 - **Component Composition**: Building components that can be easily integrated and reused.
 - **Custom Hooks**: Exploring and implementing custom React hooks.
+- **Exports / Imports**: Make use of absolute paths + barrel files for the first time.
 
 ## New Implementations
 
