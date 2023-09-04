@@ -1,10 +1,4 @@
-import { CartMeal } from "../types";
-
-type CartState = {
-    meals: CartMeal[];
-    totalItems: number;
-    totalPrice: number;
-};
+import { CartMeal, CartState } from "../types";
 
 export const initialState: CartState = {
     meals: [],
