@@ -1,5 +1,5 @@
 // import styles from "./CartButton.module.css";
-import useCart from "../../hooks/useCart";
+import { useCart } from "@/features/cart";
 
 export const CartButton = () => {
     const { totalItems } = useCart();
