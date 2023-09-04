@@ -47,7 +47,7 @@ type ClearCartAction = { type: "CLEAR_CART" };
 
 type CartActions = AddMealAction | RemoveMealAction | ClearCartAction;
 
-const cartReducer = (state: CartState, action: CartActions) => {
+export const cartReducer = (state: CartState, action: CartActions) => {
     switch (action.type) {
         case "ADD_MEAL": {
             const newMeals = addOrUpdateMeal(state.meals, action.payload);
@@ -72,5 +72,3 @@ const cartReducer = (state: CartState, action: CartActions) => {
             throw new Error("Unknown action in cartReducer");
     }
 };
-
-export default cartReducer;

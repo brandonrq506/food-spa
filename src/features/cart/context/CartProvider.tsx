@@ -1,13 +1,13 @@
 import { useReducer } from "react";
 import CartContext from "./CartContext";
-import cartReducer, { initialState } from "./cartReducer";
+import { cartReducer, initialState } from "./cartReducer";
 import { CartContextProps, CartMeal } from "../types";
 
 type CartProviderProps = {
     children: React.ReactNode;
 };
 
-const CartProvider = ({ children }: CartProviderProps) => {
+export const CartProvider = ({ children }: CartProviderProps) => {
     const [state, dispatch] = useReducer(cartReducer, initialState);
 
     const addMeal = (meal: CartMeal) => dispatch({ type: "ADD_MEAL", payload: meal });
@@ -29,5 +29,3 @@ const CartProvider = ({ children }: CartProviderProps) => {
         </CartContext.Provider>
     );
 };
-
-export default CartProvider;
