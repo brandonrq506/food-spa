@@ -5,7 +5,9 @@ export const Header = () => {
     return (
         <header className={styles.header}>
             <h1>React Meals</h1>
-            <CartButton />
+            <CartButton>
+                <span>Your Cart</span>
+            </CartButton>
         </header>
     );
 };
