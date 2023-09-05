@@ -15,6 +15,6 @@
     padding: 0 10%;
 
     /* Appearance */
-    background-color: #8a2b06;
-    color: white;
+    background-color: var(--secondary-background);
+    color: var(--primary-text);
 }
