@@ -1,5 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
 
+body[data-theme='dark'] {
+    --primary-background: #23272F;
+    --secondary-background: #343A46;
+    --primary-text: #F6F7F9;
+    --secondary-text: #A4A6AA;
+    --link: #149ECA;
+    --link-hover: #0D6E8C;
+}
+
+/* TODO: Decide on a light-theme palette */
+body[data-theme='light'] {
+    --primary-background: #23272F;
+    --secondary-background: #343A46;
+    --primary-text: #F6F7F9;
+    --secondary-text: #A4A6AA;
+    --link: #149ECA;
+    --link-hover: #0D6E8C;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -10,5 +29,5 @@ html {
 
 body {
     margin: 0;
-    background-color: #3f3f3f;
+    background-color: var(--primary-background);
 }
