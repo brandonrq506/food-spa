@@ -1,11 +1,24 @@
-// import styles from "./CartButton.module.css";
+import styles from "./CartButton.module.css";
+import { CartIcon } from "../CartIcon/CartIcon";
+
 import { useCart } from "@/features/cart";
 
-export const CartButton = () => {
+type CartButtonProps = {
+    children?: React.ReactNode;
+};
+
+export const CartButton = ({ children = '' }: CartButtonProps) => {
     const { totalItems } = useCart();
     return (
-        <div>
-            {totalItems}
-        </div>
+        <button className={styles.button}>
+            <span className={styles.icon}>
+                <CartIcon />
+            </span>
+            <span>{children}</span>
+            <span className={styles.badge}>
+                {totalItems}
+            </span>
+        </button>
     );
 };
+//TODO: Missing heart-beat animation when totalItems are updated.

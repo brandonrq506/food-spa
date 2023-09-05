@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import CartContext from "./CartContext";
+import { CartContext } from "./CartContext";
 import { cartReducer, initialState } from "./cartReducer";
 import { CartContextProps, CartMeal } from "../types";
 
