@@ -11,12 +11,12 @@ body[data-theme='dark'] {
 
 /* TODO: Decide on a light-theme palette */
 body[data-theme='light'] {
-    --primary-background: #23272F;
-    --secondary-background: #343A46;
-    --primary-text: #F6F7F9;
+    --primary-background: #ffffff;
+    --secondary-background: #e4e4e4;
+    --primary-text: #a82323;
     --secondary-text: #A4A6AA;
-    --link: #149ECA;
-    --link-hover: #0D6E8C;
+    --link: #691919;
+    --link-hover: #531111;
 }
 
 * {
@@ -30,4 +30,5 @@ html {
 body {
     margin: 0;
     background-color: var(--primary-background);
+    color: var(--primary-text);
 }

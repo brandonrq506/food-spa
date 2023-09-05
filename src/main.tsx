@@ -4,11 +4,14 @@ import ReactDOM from "react-dom/client";
 
 import App from "./App.tsx";
 import { CartProvider } from "./features/cart";
+import { ThemeProvider } from "./features/theme";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>
-        <CartProvider>
-            <App />
-        </CartProvider>
+        <ThemeProvider>
+            <CartProvider>
+                <App />
+            </CartProvider>
+        </ThemeProvider>
     </React.StrictMode>
 );
