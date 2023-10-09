@@ -1,5 +1,6 @@
 import styles from './MealList.module.css';
 import { Card } from "@/components/elements";
+import { MealItem } from '../MealItem/MealItem';
 
 import { useGetMeals } from '../..';
 
@@ -17,9 +18,9 @@ export const MealList = () => {
         <section className={styles.meals}>
             <Card>
                 <ul>
-                    {data?.map((meal) => (
-                        <li key={meal.id}>{meal.name}</li>
-                    ))}
+                    {data?.map((meal) =>
+                        <MealItem key={meal.id} meal={meal} />
+                    )}
                 </ul>
             </Card>
         </section>
